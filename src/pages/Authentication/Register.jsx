@@ -3,6 +3,7 @@ import firebaseApp from '../FirebaseConfig';
 import { getAuth, updateProfile, createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
+import '../Style/Register.css'
 
 function Register() {
 
@@ -67,8 +68,9 @@ function Register() {
   }
 
   return (
-    <>
-      <h1 className='text-center'>Y</h1>
+    <section className='registrationSection'>
+      <h1 className='text-center mt-5'>Interbasket</h1>
+      <h5 className='text-secondary text-center mb-5 ms-1'>Talk hoops and have fun.</h5>
       <h2 className='text-center'>Create your account</h2>
       <div className="row">
         <div className="col-md-4">
@@ -76,7 +78,7 @@ function Register() {
         </div>
 
         <div className="col-md-4">
-          <div className="card d-flex mx-auto">
+          <div className="card d-flex mx-auto" id='registrationCard'>
             <div className="card-body">
               <input type="text" placeholder='Username' className='form-control mb-2'
                 onChange={(e) => setUserName(e.target.value)} value={username}
@@ -91,8 +93,8 @@ function Register() {
               <input type="password" placeholder='Confirm Password' className='form-control mb-2'
                 onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword}
               />
-              <button className="btn btn-primary d-flex mx-auto" onClick={handleRegistration}>Create an account</button>
-              <p className='mt-3 text-center'>Already have an account? <Link to='/login' className='text-primary'>Log in here</Link></p>
+              <button className="btn btn-primary d-flex mx-auto" id='createAccount' onClick={handleRegistration}>Create an account</button>
+              <p className='mt-3 text-center'>Already have an account? <Link to='/login' id='loginLink'>Log in here</Link></p>
 
             </div>
           </div>
@@ -104,7 +106,7 @@ function Register() {
 
       </div>
 
-    </>
+    </section>
 
   )
 

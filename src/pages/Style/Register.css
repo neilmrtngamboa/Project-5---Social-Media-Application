@@ -1,0 +1,27 @@
+.registrationSection {
+        font-family: "Francois One", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+}
+
+#registrationCard {
+    background-color: rgb(27, 137, 255);
+}
+
+#createAccount {
+    background-color: rgb(255, 188, 73);
+    color: black;
+    border: none;
+}
+
+#createAccount:hover {
+    background-color: rgb(255, 179, 48);
+}
+
+#loginLink {
+    color: white;
+}
+
+#loginLink:hover {
+    text-decoration: underline;
+}
