@@ -1,7 +1,7 @@
 
 
 
-function Post({ username, body, date_posted, postID, deletePost }) {
+function Post({ username, body, date_posted, postID, deletePost }) {    
     return (
         <div className="card mb-2">
             <div className="card-body">

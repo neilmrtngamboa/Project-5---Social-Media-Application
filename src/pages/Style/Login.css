@@ -1,0 +1,34 @@
+.loginSection {
+    
+        font-family: "Francois One", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      
+      
+}
+
+#formContainer{
+    background-color: rgb(0, 166, 255);
+}
+
+#loginButton {
+    background-color: rgb(255, 199, 127);
+    border: none;
+    color: black;
+}
+
+#loginButton:hover {
+    background-color: rgb(97, 97, 97);
+}
+
+#signUp {
+    color: rgb(255, 255, 255);
+}
+
+#signUp:hover {
+    text-decoration: underline;
+}
+
+#headTag {
+    color: rgb(37, 179, 255);
+}
