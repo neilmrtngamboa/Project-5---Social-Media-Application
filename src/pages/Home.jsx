@@ -1,6 +1,9 @@
 
 import Post from "./Post";
 import firebaseApp from './FirebaseConfig';
+import { imageDb } from "./FirebaseConfig";
+import {ref, uploadBytes} from 'firebase/storage';
+import { v4 } from "uuid";
 import { getFirestore, addDoc, collection, Timestamp, onSnapshot, deleteDoc, doc } from 'firebase/firestore';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import { useState, useEffect } from "react";
@@ -12,9 +15,9 @@ function Home() {
     let navigate = useNavigate();
     const auth = getAuth(firebaseApp);
     const db = getFirestore(firebaseApp);
-
     const [userProfile, setUserProfile] = useState({})
     const [post, setpost] = useState('');
+
     const [showposts, setShowposts] = useState([]);
 
     useEffect(() => {
@@ -43,9 +46,8 @@ function Home() {
             })
             setShowposts(newShowposts)
 
-
         });
-
+        
 
     }, [])
 
@@ -57,20 +59,24 @@ function Home() {
     }
 
     const createpost = () => {
-
+        
         if (post !== '') {
             const postData = {
                 body: post,
                 user_email: userProfile.email,
                 username: userProfile.username,
                 date_posted: Timestamp.now()
+                
 
             }
 
             addDoc(collection(db, 'posts'), postData).then(() => {
                 setpost('');
-
             })
+
+            
+
+            
 
         } else {
             alert('Error! Your postbox is empty!').then(() => {
@@ -110,7 +116,7 @@ function Home() {
                         <h5 className="mb-4">Suggested people:</h5>
 
                         <div className="d-flex mb-2">
-                            <img className="dp1" src="https://imgix.ranker.com/user_node_img/50041/1000809164/original/young-lebron-james-as-a-teenager-photo-u1?auto=format&q=60&fit=crop&fm=pjpg&dpr=2&w=375" alt="" />
+                            <img className="dp1" src="https://pyxis.nymag.com/v1/imgs/847/0f7/504c63a03d8a751a5cbeda0bc064306bb4-lebron-james.rsquare.w400.jpg" alt="" />
                             <p className="mt-1 ms-1">@kingjames</p>
                             <button className="btn btn-primary pt-0 pb-0 ms-auto">Follow +</button>
                         </div>
@@ -148,6 +154,7 @@ function Home() {
                             onChange={(e) => setpost(e.target.value)} value={post}
 
                         />
+
                         <button className="btn" id="postButton" onClick={createpost}><span className="material-symbols-outlined mt-2">
                             send
                         </span></button>
@@ -164,6 +171,7 @@ function Home() {
                                 date_posted={postRecord.date_posted.toDate().toLocaleTimeString('en-GB', { month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' })}
                                 postID={postRecord.postID}
                                 deletePost={deletePost}
+                                
                             />
                         ))
                     }

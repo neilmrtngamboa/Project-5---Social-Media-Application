@@ -10,7 +10,7 @@ function Post({ username, body, date_posted, postID, deletePost }) {
                         style={{ height: '2rem', width: '2rem' }}
                     />
                     <h6 className="card-title ms-3 my-auto fw-bold">@{username}</h6>
-                    <div class="dropdown">
+                    <div className="dropdown">
                         <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             ...
                         </button>
