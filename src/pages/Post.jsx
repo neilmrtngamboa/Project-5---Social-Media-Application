@@ -9,7 +9,7 @@ function Post({ username, body, date_posted, postID, deletePost }) {
                     <img src="https://static-00.iconduck.com/assets.00/person-icon-950x1024-fy2qylik.png" className="img-fluid"
                         style={{ height: '2rem', width: '2rem' }}
                     />
-                    <h6 className="card-title ms-3 my-auto fw-bold">{username}</h6>
+                    <h6 className="card-title ms-3 my-auto fw-bold">@{username}</h6>
                     <div class="dropdown">
                         <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             ...

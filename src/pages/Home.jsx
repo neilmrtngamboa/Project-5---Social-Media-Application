@@ -1,10 +1,11 @@
 
 import Post from "./Post";
 import firebaseApp from './FirebaseConfig';
-import { getFirestore, addDoc, collection, Timestamp, onSnapshot, deleteDoc, doc, orderBy, query } from 'firebase/firestore';
+import { getFirestore, addDoc, collection, Timestamp, onSnapshot, deleteDoc, doc } from 'firebase/firestore';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import './Style/Home.css';
 
 function Home() {
 
@@ -89,28 +90,67 @@ function Home() {
 
 
     return (
-        <main className="d-flex flex-column min-vh-100">
+        <main className="d-flex flex-column min-vh-100" id="main">
 
-            <div className="d-flex mb-3">
-                <h1>Y</h1>
-                <button className="btn btn-primary" onClick={Logout}>Log out</button>
+            <div className="d-flex">
+            <marquee behavior="" direction="right" className='fs-1'>Interbasket Feed</marquee>
+            <button className="btn ms-auto" id="logOut" onClick={Logout}>Log out</button>
             </div>
 
             <div className="row">
                 <div className="col-md-3">
-                    <div className="container-fluid border bg-light p-3">
-                        <h5>{userProfile.username}</h5>
-                        <h6>{userProfile.email}</h6>
+                    <div className="container-fluid p-3 ms-1 mb-2" id="followContainer">
+
+                        <div className="container-fluid shadow rounded p-3 mb-5" id="userContainer">
+                            <h5> @{userProfile.username}</h5>
+                            <small className="text-secondary">{userProfile.email}</small>
+
+                        </div>
+
+                        <h5 className="mb-4">Suggested people:</h5>
+
+                        <div className="d-flex mb-2">
+                            <img className="dp1" src="https://imgix.ranker.com/user_node_img/50041/1000809164/original/young-lebron-james-as-a-teenager-photo-u1?auto=format&q=60&fit=crop&fm=pjpg&dpr=2&w=375" alt="" />
+                            <p className="mt-1 ms-1">@kingjames</p>
+                            <button className="btn btn-primary pt-0 pb-0 ms-auto">Follow +</button>
+                        </div>
+
+                        <div className="d-flex mb-2">
+                            <img className="dp1" src="https://i.pinimg.com/736x/f2/b5/09/f2b50985a0a995b8d99e528c66ba4d05.jpg" alt="" />
+                            <p className="mt-1 ms-1">@DBook</p>
+                            <button className="btn btn-primary pt-0 pb-0 ms-auto">Follow +</button>
+                        </div>
+
+                        <div className="d-flex">
+                            <img className="dp1" src="https://www.proballers.com/media/cache/resize_300/ul/player/backup/68582-1-5d7810ec49a88p.jpg" alt="" />
+                            <p className="mt-1 ms-1">@babesbolick</p>
+                            <button className="btn btn-primary pt-0 pb-0 ms-auto">Follow +</button>
+                        </div>
+
+                        <h5 className="mt-5 mb-3">Hot Topics 🔥</h5>
+                        <div className="container-fluid">
+                            <h6>#MarchMadness</h6>
+                            <small className="text-secondary">76.8k people are talking about this</small>
+                            <h6 className="mt-2">#Lakers</h6>
+                            <small className="text-secondary">21.8k people are talking about this</small>
+                            <h6 className="mt-2">Lebron GOAT</h6>
+                            <small className="text-secondary">17.2k people are talking about this</small>
+                            <h6 className="mt-2">NCAA Season 100</h6>
+                            <small className="text-secondary">3.2k people are talking about this</small>
+                        </div>
+
                     </div>
                 </div>
 
                 <div className="col-md-8">
-                    <div className="container-fluid border bg-light p-3 mb-3">
+                    <div className="container-fluid  p-3 mb-3" id="postContainer">
                         <input type="text" className="form-control" placeholder="Talk about something..."
                             onChange={(e) => setpost(e.target.value)} value={post}
 
                         />
-                        <button className="btn btn-primary mt-3" onClick={createpost}>Post</button>
+                        <button className="btn" id="postButton" onClick={createpost}><span className="material-symbols-outlined mt-2">
+                            send
+                        </span></button>
                     </div>
 
 
@@ -131,7 +171,7 @@ function Home() {
                 </div>
             </div>
 
-            <footer className="text-center text-light p-3 mt-auto bg-dark">
+            <footer className="text-center p-3 mt-auto" id="footerSection">
                 <h5 className="fw-bold">Social Media Application</h5>
                 <small className="fw-light">A project by Neil Martin Gamboa</small>
                 <div><small className="fw-light">BASE404™</small></div>
