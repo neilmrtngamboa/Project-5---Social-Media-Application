@@ -4,7 +4,7 @@ import firebaseApp from './FirebaseConfig';
 import { imageDb } from "./FirebaseConfig";
 import {ref, uploadBytes} from 'firebase/storage';
 import { v4 } from "uuid";
-import { getFirestore, addDoc, collection, Timestamp, onSnapshot, deleteDoc, doc } from 'firebase/firestore';
+import { getFirestore, addDoc, collection, Timestamp, onSnapshot, deleteDoc, doc, orderBy, query } from 'firebase/firestore';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -19,6 +19,8 @@ function Home() {
     const [post, setpost] = useState('');
 
     const [showposts, setShowposts] = useState([]);
+
+   
 
     useEffect(() => {
 
@@ -161,7 +163,11 @@ function Home() {
                     </div>
 
 
-                    {
+               {
+                showposts.length > 0
+                ?
+                (
+                    (
                         showposts.map((postRecord) => (
                             <Post
                                 key={postRecord.id}
@@ -174,7 +180,14 @@ function Home() {
                                 
                             />
                         ))
-                    }
+                    )
+                )
+
+                :
+                (
+                    <h1 className="text-center mt-5 text-secondary">There are no current posts from other users.</h1>
+                )
+               }
 
                 </div>
             </div>
