@@ -18,6 +18,11 @@ function Register() {
     const auth = getAuth(firebaseApp);
     onAuthStateChanged(auth, (user) => {
       if (user) {
+        if (user.displayName !== null) {
+          setUserName(user.displayName)
+        } else {
+
+        }
         navigate('/')
       } else {
 
@@ -40,6 +45,7 @@ function Register() {
             displayName: username
           })
           window.location.reload().then((navigate('/')));
+
 
 
         })
