@@ -1,7 +1,17 @@
+import { useState } from "react";
 
+function Post({ username, body, date_posted, postID, deletePost, userProfile }) {
 
+    const [deleteState, setDeleteState] = useState()
 
-function Post({ username, body, date_posted, postID, deletePost }) {    
+    const handleDelete = () => {
+        if(userProfile.username !== username){
+            setDeleteState(true)
+        }else{
+            setDeleteState(false)
+        }
+    }
+    
     return (
         <div className="card mb-2">
             <div className="card-body">
@@ -11,11 +21,11 @@ function Post({ username, body, date_posted, postID, deletePost }) {
                     />
                     <h6 className="card-title ms-3 my-auto fw-bold">@{username}</h6>
                     <div className="dropdown">
-                        <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" onClick={handleDelete}>
                             ...
                         </button>
                         <ul class="dropdown-menu">
-                            <li><button className="btn" onClick={() => deletePost(postID)}>Delete</button></li>
+                            <li><button className="btn" onClick={() => deletePost(postID)} disabled={deleteState}>Delete</button></li>
                         </ul>
                     </div>
                 </div>

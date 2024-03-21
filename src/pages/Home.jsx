@@ -18,9 +18,7 @@ function Home() {
     const [userProfile, setUserProfile] = useState({})
     const [post, setpost] = useState('');
 
-    const [showposts, setShowposts] = useState([]);
-
-   
+    const [showposts, setShowposts] = useState([]); 
 
     useEffect(() => {
 
@@ -88,6 +86,8 @@ function Home() {
 
 
     }
+
+
 
     const deletePost = (postID) => {
         const deletePost = doc(db, 'posts', postID)
@@ -177,6 +177,7 @@ function Home() {
                                 date_posted={postRecord.date_posted.toDate().toLocaleTimeString('en-GB', { month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' })}
                                 postID={postRecord.postID}
                                 deletePost={deletePost}
+                                userProfile={userProfile}
                                 
                             />
                         ))
